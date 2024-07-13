@@ -1,11 +1,17 @@
-import express, { NextFunction, Request, Response } from "express";
-import userRouter from "./routes/users";
+import express, { RequestHandler } from "express";
+import bodyParser from "body-parser";
+// import userRouter from "./routes/users";
+import tableRouter from "./routes/tables";
 
 const app = express();
 
-app.use("/api/users", userRouter);
+app.use(bodyParser.json());
 
-const PORT = 3000;
+// app.use("/api/users", userRouter);
+
+app.use("/tables", tableRouter);
+
+const PORT = 3001;
 
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);
