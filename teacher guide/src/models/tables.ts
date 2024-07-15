@@ -1,5 +1,6 @@
 import { Table } from "../types/table";
 
+// TODO: add mock value
 const tables: Table[] = [
   { no: 1, status: "done" },
   { no: 2, status: "pending" },
@@ -27,9 +28,12 @@ export const updateTableByNo = (
     return;
   }
 
+  // TODO only able to update status
   if (updatedTable.status) {
     table.status = updatedTable.status;
   }
+
+  // TODO update cart
 
   return updatedTable;
 };
