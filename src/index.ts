@@ -1,11 +1,10 @@
 import express, { RequestHandler } from "express";
-import Noodle from "./routes/router";
-import bodyParser from "body-parser";
+import { noodleMenu } from "./data/noodleMenu";
+import menuRouter from "./routes/menu";
 const server = express();
 
-server.use(bodyParser.json());
-server.use("/", Noodle);
+server.use("/", menuRouter);
 
-server.listen("3018", () => {
+server.listen("2000", () => {
   console.log("server is running");
 });

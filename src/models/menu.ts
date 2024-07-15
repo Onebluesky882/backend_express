@@ -1,5 +1,6 @@
 import { noodleMenu } from "../data/noodleMenu";
 
-export const getNoodles = () => {
+//models
+export const noodleModels = () => {
   return noodleMenu;
 };

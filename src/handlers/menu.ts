@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
-import * as models from "../models/nooodleMenu";
+import { noodleModels } from "../models/menu";
 
-export const getNoodle: RequestHandler = (req, res) => {
-  res.json(models.getNoodles());
+// handler
+export const noodle: RequestHandler = (req, res) => {
+  res.json(noodleModels());
 };
