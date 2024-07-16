@@ -1,9 +1,10 @@
 import express, { RequestHandler } from "express";
-import menuRouter from "./routes/menu";
+
 const server = express();
+import router from "./routes/menu";
 
-server.use("/", menuRouter);
+server.use("/", router);
 
-server.listen("3010", () => {
+server.listen("3080", () => {
   console.log("server is running");
 });

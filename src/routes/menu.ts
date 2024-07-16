@@ -1,9 +1,17 @@
 import { Router } from "express";
-import { getAllMenu, getMenuName } from "../models/menu";
+import {
+  getMenuAll,
+  getMenuByGroup,
+  getMenuById,
+  updateMenuById,
+} from "../handlers/menu";
 
 const router = Router();
 
-router.get("/menu", getAllMenu);
-router.get("/menu/:name", getMenuName);
+router.get("/menu", getMenuAll);
+router.get("/menu/:group", getMenuByGroup);
+router.get("/menu/:id", getMenuById);
+router.get("/:id", getMenuById);
+router.post("/:id", updateMenuById);
 
 export default router;

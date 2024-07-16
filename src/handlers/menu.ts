@@ -1,24 +1,51 @@
 import { RequestHandler } from "express";
 import * as models from "../models/menu";
 
-const validateMenu = (name: string) => {
-  let menuName;
+const validateRouterMenu = (group: string) => {
+  let menuGroup;
   try {
-    menuName = name;
-    return menuName;
+    menuGroup = group;
+    return menuGroup;
   } catch (error) {
     return;
   }
 };
 
-export const getAllMenu: RequestHandler = (req, res) => {
-  res.json(models.getAllMenu());
+const validateRouterMenuById = (menuId: string) => {
+  let id;
+  try {
+    id = parseInt(menuId);
+    return id;
+  } catch (error) {
+    return;
+  }
 };
 
-export const getMenuName: RequestHandler = (req, res) => {
-  let menuName = validateMenu(req.params.name);
-  if (!menuName) {
-    return res.status(404).send("error : menu no exist");
+export const getMenuAll: RequestHandler = (req, res) => {
+  res.json(models.getMenuAll());
+};
+
+export const getMenuByGroup: RequestHandler = (req, res) => {
+  let item = validateRouterMenu(req.params.group);
+  if (!item) {
+    return res.status(404).send("Error: table no exist");
   }
-  res.json(models.getMenuName(menuName));
+  res.json(models.getMenuItem(item));
+};
+
+export const getMenuById: RequestHandler = (req, res) => {
+  let item = validateRouterMenuById(req.params.id);
+  if (!item) {
+    return res.status(404).send("Error: table no exist");
+  }
+  res.json(models.getMenuById(item));
+};
+
+export const updateMenuById: RequestHandler = (req, res) => {
+  let item = validateRouterMenuById(req.params.id);
+
+  if (!item) {
+    return res.status(404).send("Error: table no exist");
+  }
+  res.json(models.updateItemById(item, req.body));
 };
