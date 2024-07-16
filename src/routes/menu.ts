@@ -10,7 +10,9 @@ const router = Router();
 
 router.get("/menu", getMenuAll);
 router.get("/menu/:group", getMenuByGroup);
+// /menu/id not working
 router.get("/menu/:id", getMenuById);
+// normal
 router.get("/:id", getMenuById);
 router.post("/:id", updateMenuById);
 
