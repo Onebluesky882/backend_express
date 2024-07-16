@@ -1,6 +1,14 @@
-import { noodleMenu } from "../data/noodleMenu";
+import { menuData } from "../data/Menu";
 
 //models
-export const noodleModels = () => {
-  return noodleMenu;
+export const getAllMenu = () => {
+  return menuData;
+};
+
+export const getMenuName = (name: string) => {
+  const menu = menuData.find((menu) => menu.name === name);
+  if (!menu) {
+    return;
+  }
+  return menu;
 };

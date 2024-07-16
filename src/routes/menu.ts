@@ -1,10 +1,9 @@
 import { Router } from "express";
-import { noodle } from "../handlers/menu";
+import { getAllMenu, getMenuName } from "../models/menu";
 
 const router = Router();
 
-router.get("/noodle", noodle);
-router.get("/noodle/:no", noodle);
-router.post("/noodle/:no", noodle);
+router.get("/menu", getAllMenu);
+router.get("/menu/:name", getMenuName);
 
 export default router;
