@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  addMenuItem,
   getMenuAll,
   getMenuByGroup,
   getMenuById,
@@ -14,6 +15,11 @@ router.get("/menu/:group", getMenuByGroup);
 router.get("/menu/:id", getMenuById);
 // normal
 router.get("/:id", getMenuById);
+
+// update
 router.post("/:id", updateMenuById);
+
+// create
+router.put("/menu/", addMenuItem);
 
 export default router;

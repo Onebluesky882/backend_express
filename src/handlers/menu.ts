@@ -49,3 +49,7 @@ export const updateMenuById: RequestHandler = (req, res) => {
   }
   res.json(models.updateItemById(item, req.body));
 };
+
+export const addMenuItem: RequestHandler = (req, res) => {
+  res.json(models.addMenuItem(req.body));
+};

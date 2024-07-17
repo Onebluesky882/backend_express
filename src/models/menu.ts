@@ -26,9 +26,15 @@ export const updateItemById = (id: number, updateById: Partial<MenuItem>) => {
   if (!itemId) {
     return;
   }
-  // เปลี่ยนราคาไม่ได้
+
   if (updateById.price) {
     itemId.price = updateById.price;
   }
-  return updateById;
+  console.log("update successful");
+  return itemId;
+};
+
+//create
+export const addMenuItem = (newItem: MenuItem): void => {
+  menuData.push(newItem);
 };
