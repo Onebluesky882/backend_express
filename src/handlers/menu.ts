@@ -12,7 +12,7 @@ const validateRouterMenu = (group: string) => {
   }
 };
 
-const UpdateMenuById = (menuId: string) => {
+const UpdateMenu = (menuId: string) => {
   let id;
   try {
     id = parseInt(menuId);
@@ -29,6 +29,7 @@ const CreateNewMenu = ({ id, group, image, name, price }: MenuItem) => {
     return;
   }
 };
+
 export const getMenuAll: RequestHandler = (req, res) => {
   res.json(models.getMenuAll());
 };
@@ -42,7 +43,7 @@ export const getMenuByGroup: RequestHandler = (req, res) => {
 };
 
 export const getMenuById: RequestHandler = (req, res) => {
-  let item = UpdateMenuById(req.params.id);
+  let item = UpdateMenu(req.params.id);
   if (!item) {
     return res.status(404).send("Error: table no exist");
   }
@@ -50,7 +51,7 @@ export const getMenuById: RequestHandler = (req, res) => {
 };
 
 export const updateMenuById: RequestHandler = (req, res) => {
-  let item = UpdateMenuById(req.params.id);
+  let item = UpdateMenu(req.params.id);
 
   if (!item) {
     return res.status(404).send("Error: table no exist");
