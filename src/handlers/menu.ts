@@ -1,5 +1,6 @@
 import { RequestHandler } from "express";
 import * as models from "../models/menu";
+import { MenuItem } from "../types/menuItem";
 
 const validateRouterMenu = (group: string) => {
   let menuGroup;
@@ -21,6 +22,25 @@ const validateRouterMenuById = (menuId: string) => {
   }
 };
 
+const validateRouterCreateNewMenu = ({
+  id,
+  name,
+  group,
+  image,
+  price,
+}: MenuItem) => {
+  try {
+    return {
+      id,
+      name,
+      group,
+      image,
+      price,
+    };
+  } catch (error) {
+    return;
+  }
+};
 export const getMenuAll: RequestHandler = (req, res) => {
   res.json(models.getMenuAll());
 };
@@ -51,5 +71,10 @@ export const updateMenuById: RequestHandler = (req, res) => {
 };
 
 export const addMenuItem: RequestHandler = (req, res) => {
-  res.json(models.addMenuItem(req.body));
+  const newMenu = validateRouterCreateNewMenu(req.body);
+  if (!newMenu) {
+    res.status(400).json({ message: "Invalid menu item data" });
+    return;
+  }
+  res.json(models.addMenuItem(newMenu));
 };
