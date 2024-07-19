@@ -33,7 +33,8 @@ export const updateTableByNo = (
     table.status = updatedTable.status;
   }
 
-  // TODO update cart
+  // TODO update carts
+  // if check payload have carts, then update the carts in be
 
   return updatedTable;
 };
